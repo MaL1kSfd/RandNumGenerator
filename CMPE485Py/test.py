@@ -1,25 +1,24 @@
 seed = 27
+count = 10000
 
-randomNumBetweenZeroAndOne = [0.0] * 4 
+randomNumBetweenZeroAndOne = []
 
-def RandomGen(x):
+def RandomGen(x, count):
     nextRand = 0
-    a = 17; c = 43; m = 100
+    a = 101; c = 3; m = 10000 #make c and m coprime
 
-    i = 0
-    while nextRand != 27:
+    for i in range(count): 
         #Xi+1
         nextRand = (a*x+c) % m
         x = nextRand
-        # for rand in range(len(randomNumBetweenZeroAndOne)):
-        #     randomNumBetweenZeroAndOne[rand] = nextRand/m
-        randomNumBetweenZeroAndOne[i] = nextRand/m
-        i += 1
+
+        #randomNumBetweenZeroAndOne[i] = nextRand/m
+        randomNumBetweenZeroAndOne.append(nextRand/m)
 
         print(nextRand)
 
 
-RandomGen(seed)
+RandomGen(seed, count)
 print(randomNumBetweenZeroAndOne)
 
 #do chi-square test
