@@ -1,7 +1,9 @@
 from prettytable import PrettyTable
+import math
 
 seed = 27
 count = 1000
+binCount = 0
 
 randomNum = []
 
@@ -22,13 +24,6 @@ def RandomGen(x, count):
 
 file_path = "RN-file.txt"
 
-def ListToTable():
-    for rn in randomNum:
-        match randomNum[rn]:
-            case 1:
-                print("Pip")
-
-    print("Stuff")
 
 def SaveRNs():
     try:
@@ -40,9 +35,25 @@ def SaveRNs():
         print("That file already exists!")
 
 
+def RetrieveRands():
+    global binCount
+    i = 1
+    for rn in randomNum:
+        if (rn < 0.1):
+            binCount += 1
+    print(binCount)        
+    # for tr in range(10):
+    #     lower = math.floor(rn * 10) / 10
+    #     randoms.add_row([i, lower, lower + 0.0999, binCount])
+    #     i += 1
+        
+    #print(randoms)    
+        
+
 RandomGen(seed, count)
-print(randomNum)
 SaveRNs()
+RetrieveRands()
+
 
 #do chi-square test
 
