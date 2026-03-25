@@ -3,9 +3,11 @@ import math
 
 seed = 27
 count = 1000
-binCount = 0
+bin1Count = 0
+bin2Count = 0
 
 randomNum = []
+bins = [] * 10
 
 randoms = PrettyTable(["Bin No.", "Bin Lower Limit", "Bin Higher Limit", "Bin-Count"])
 
@@ -36,12 +38,13 @@ def SaveRNs():
 
 
 def RetrieveRands():
-    global binCount
-    i = 1
     for rn in randomNum:
-        if (rn < 0.1):
-            binCount += 1
-    print(binCount)        
+        index = math.floor(rn * 10) 
+        if(index != 1):
+            bins[index] += 1
+        else:
+            bins[index] += 1
+    print(bins)       
     # for tr in range(10):
     #     lower = math.floor(rn * 10) / 10
     #     randoms.add_row([i, lower, lower + 0.0999, binCount])
@@ -50,9 +53,13 @@ def RetrieveRands():
     #print(randoms)    
         
 
-RandomGen(seed, count)
-SaveRNs()
-RetrieveRands()
+# RandomGen(seed, count)
+# SaveRNs()
+# RetrieveRands()
+
+# non = 10
+# bon = min(math.floor(non * 10)) 
+# print(bon)
 
 
 #do chi-square test
